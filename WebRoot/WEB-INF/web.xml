@@ -648,6 +648,13 @@
     <servlet-name>T_feedback_Servlet</servlet-name>
     <servlet-class>com.jianguo.servlet.jpush.T_feedback_Servlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>T_user_wx_Insert_Servlet</servlet-name>
+    <servlet-class>com.jianguo.servlet.wx.T_user_wx_Insert_Servlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -1176,6 +1183,10 @@
   <servlet-mapping>
     <servlet-name>T_pushAction_servlet</servlet-name>
     <url-pattern>/T_pushAction_servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>T_user_wx_Insert_Servlet</servlet-name>
+    <url-pattern>/T_user_wx_Insert_Servlet</url-pattern>
   </servlet-mapping>
   <!--<welcome-file-list>
     <welcome-file>login.html</welcome-file>

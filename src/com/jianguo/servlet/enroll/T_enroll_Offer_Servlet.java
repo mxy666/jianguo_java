@@ -110,12 +110,12 @@ public class T_enroll_Offer_Servlet extends HttpServlet {
 				}else if(Offer.equals("3")){
 					int i = T_enroll_Sql.update_status("5",login_id, job_id);
 						T_job_Bean t_job = T_job_Sql.select_id(job_id);
-						
+						T_job_info_Bean t_job_info = T_job_info_Sql.select_job_id(job_id);
 						List<T_enroll_Bean> list_t_enroll = T_enroll_Sql.select_job_id_status2_all(job_id, "3","5","8","9","10","11","12","13");
 						T_job_Sql.update_countss(list_t_enroll.size()+"",job_id);
 						
 						T_user_login_Bean t_user_login = T_user_login_Sql.select_id(login_id);
-						Text_Sms.textdemos2(t_user_login.getTel(),t_job.getName());
+						Text_Sms.textdemos2(t_user_login.getTel(),t_job.getName(),t_job_info.getTel());
 //						MD_SMS_Info.luyong2(t_user_login.getTel(),t_job.getName());
 						
 //						Jdpush.sendPush("您所报【"+t_job.getName()+"】已被商家正式录用，请确认参加","jianguo"+login_id);

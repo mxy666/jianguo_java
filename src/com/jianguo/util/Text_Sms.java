@@ -116,9 +116,10 @@ public class Text_Sms {
 		}
 
 
-	public static void textdemos2(String user_username,String job_name) {
+	public static void textdemos2(String user_username,String job_name,String tel) {
 		// TODO Auto-generated method stub
-		String job_test = "【兼果兼职】集美貌于才华于一身的你报名的("+job_name+")已被商家录用，请前往我的兼职中确认参加该兼职，若不及时确认会被商家拒绝哦！更多精彩请关注官方微信公众号：兼果job。";
+//		String job_test = "【兼果兼职】集美貌于才华于一身的你报名的("+job_name+")已被商家录用，请前往我的兼职中确认参加该兼职，若不及时确认会被商家拒绝哦！更多精彩请关注官方微信公众号：兼果job。";
+		String job_test = "【兼果兼职】集美貌于才华于一身的你报名的("+job_name+")已被商家录用，请按商家要求准备出发。千万不要放鸽子哦。如有特殊情况请联系商家："+tel+"。";
 		String url = "http://sdk.entinfo.cn:8061/webservice.asmx/mdsmssend?sn=SDK-BBX-010-24859&pwd=FF906E078CC0AFCBF3286AD39DDD98C9&mobile="+user_username+"&content="+job_test+"&ext=&stime=&rrid=&msgfmt=";
 		Server_Get.get(url);
 	}

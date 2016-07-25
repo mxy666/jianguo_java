@@ -71,7 +71,7 @@ public class T_user_login_Insert_QQWX_Servlet extends HttpServlet {
 					t_user_login.setQiniu(qiniu_token);
 					t_user_info.setQiniu(qiniu_token);
 					
-					T_user_money_Sql.insert(t_user_login.getId()+"", "0", "0", "0", "0", "0", "0");
+					T_user_money_Sql.insert(t_user_login.getId()+"", "0", "0", "0", "0", "0", "0", "0");
 					
 					Map map = new HashMap();
 					map.put("t_user_login", t_user_login);

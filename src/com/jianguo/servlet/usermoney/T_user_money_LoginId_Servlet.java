@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.jianguo.bean.T_user_login_Bean;
 import com.jianguo.bean.T_user_money_Bean;
+import com.jianguo.bean.T_user_wx_Bean;
 import com.jianguo.sql.T_user_login_Sql;
 import com.jianguo.sql.T_user_money_Sql;
+import com.jianguo.sql.T_user_wx_Sql;
 import com.jianguo.util.Frequently;
 
 public class T_user_money_LoginId_Servlet extends HttpServlet {
@@ -50,8 +52,10 @@ public class T_user_money_LoginId_Servlet extends HttpServlet {
 			T_user_money_Bean t_user_money = T_user_money_Sql.select_login_id(login_id);
 			
 			T_user_login_Bean t_user_login = T_user_login_Sql.select_id(login_id);
-			
 			t_user_money.setPay_status(t_user_login.getStatus()+"");
+			
+			T_user_wx_Bean t_user_wx = T_user_wx_Sql.select_nickname(login_id);
+			t_user_money.setNickname(t_user_wx.getNickname());
 			
 			Map map = new HashMap();
 			map.put("t_user_money", t_user_money);

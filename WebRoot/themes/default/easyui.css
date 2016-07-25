@@ -1137,7 +1137,6 @@
 .datagrid-body {
   margin: 0;
   padding: 0;
-  overflow: auto;
   zoom: 1;
 }
 .datagrid-view1 .datagrid-body-inner {

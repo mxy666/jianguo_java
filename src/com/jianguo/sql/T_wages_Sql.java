@@ -33,16 +33,17 @@ public class T_wages_Sql {
 		return b;
 	}
 	
-	public static boolean check2(String login_id,String job_id,String remarks){
+	public static boolean check2(String login_id,String job_id,String reg_time){
 		Connection conn=DButil.getCon();
 		boolean b = true;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select * from t_wages where login_id=? and job_id=?";
+			String sql = "select * from t_wages where login_id=? and job_id=? and reg_time=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, login_id);
 			pstmt.setString(2, job_id);
+			pstmt.setString(3, reg_time);
 			rs = pstmt.executeQuery();
 			b = rs.next();
 			pstmt.close();

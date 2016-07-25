@@ -71,7 +71,7 @@ public class T_PC_User_Insert_Servlet extends HttpServlet {
 					
 					T_user_info_Sql.insert_qq_wx(t_user_login.getId()+"", "¼æ¹û",name, "http://v3.jianguojob.com/moren.png",school,"0","0","0", ly_time, ly_time);
 					T_user_resume_Sql.insert_qq_wx(t_user_login.getId()+"", "¼æ¹û",name, "http://v3.jianguojob.com/moren.png",school,"",sex,"0","0","","","","","");
-					T_user_money_Sql.insert(t_user_login.getId()+"", "0", "8.88", "0", "0", "0", "0");
+					T_user_money_Sql.insert(t_user_login.getId()+"", "0", "8.88", "0", "0", "0", "0", "0");
 
 					T_enroll_limit_Sql.insert(t_user_login.getId()+"", "0", ly_time2);
 					

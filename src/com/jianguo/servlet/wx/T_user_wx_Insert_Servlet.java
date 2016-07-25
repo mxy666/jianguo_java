@@ -1,25 +1,21 @@
-package com.jianguo.servlet.job;
+package com.jianguo.servlet.wx;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-import com.jianguo.bean.T_area_Bean;
-import com.jianguo.bean.T_city_Bean;
-import com.jianguo.bean.T_type_Bean;
-import com.jianguo.sql.T_school_Sql;
+import com.jianguo.sql.T_user_money_Sql;
+import com.jianguo.sql.T_user_wx_Sql;
 import com.jianguo.util.Frequently;
 
-public class T_Job_Area_City_List_Servlet extends HttpServlet {
+public class T_user_wx_Insert_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public T_Job_Area_City_List_Servlet() {
+	public T_user_wx_Insert_Servlet() {
 		super();
 	}
 
@@ -30,16 +26,24 @@ public class T_Job_Area_City_List_Servlet extends HttpServlet {
 		this.doPost(request, response);
 	}
 
-	//http://192.168.1.132/JianGuo_Server/T_Job_Area_City_List_Servlet?only=BB74E67654FA68D0F118D65F9195E6D0&tel=111118101s050625&password=E10ADC3949BA59ABBE56E057F20F883E
-	//http://101.200.205.243:8080/T_Job_Area_City_List_Servlet?only=E4A4C26BFD881E0EED1BBA5837093EF0&tel=111118101s050625&password=E10ADC3949BA59ABBE56E057F20F883E
+	//http://192.168.1.132/JianGuo_Server/T_user_wx_Insert_Servlet?only=88BDEE78CF4BC0D027C806AB18DE9CAA&login_id=41&follow=2&collection=0
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		System.out.println("---T_Job_Area_City_List_Servlet---");
+		System.out.println("---T_user_wx_Insert_Servlet---");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		Map params =  new HashMap();
-
+		
 		String login_id =request.getParameter("login_id");
+		String openid =request.getParameter("openid");
+		String nickname =request.getParameter("nickname");
+		String sex =request.getParameter("sex");
+		String province =request.getParameter("province");
+		String city =request.getParameter("city");
+		String country =request.getParameter("country");
+		String headimgurl =request.getParameter("headimgurl");
+		String privilege =request.getParameter("privilege");
+		String unionid =request.getParameter("unionid");
 
 		//------------------访问限制--------开始----------------------
 		String only =request.getParameter("only");
@@ -49,22 +53,12 @@ public class T_Job_Area_City_List_Servlet extends HttpServlet {
 		if(only.equals(ss_only) || only.equals(ss_only2) || only.equals(ss_only3)){
 			//------------------访问限制--------结束----------------------
 
-			List<T_city_Bean> list_t_city = T_school_Sql.select_All_city();
-			List<T_city_Bean> list_t_city2 = new ArrayList<T_city_Bean>();
-			for (int i = 0; i < list_t_city.size(); i++) {
-				T_city_Bean t_city = list_t_city.get(i);
-				List<T_area_Bean> list_t_area = T_school_Sql.select_All_area(t_city.getId()+"");
-				t_city.setList_t_area(list_t_area);
-
-				list_t_city2.add(t_city);
-			}
-			List<T_type_Bean> list_t_type = T_school_Sql.select_All_type();
-				Map map = new HashMap();
-				map.put("list_t_city2", list_t_city2);
-				map.put("list_t_type", list_t_type);
-
-				params.put("data", map);
-				params.put("message", "获取地区信息成功");
+			int i = T_user_wx_Sql.insert(login_id, openid, nickname, sex, province, city, country, headimgurl, privilege, unionid);
+			if(i == 1){
+				
+				T_user_money_Sql.update_weixin("1", login_id);
+				
+				params.put("message", "微信绑定成功");
 				params.put("code", "200");
 				PrintWriter pw = response.getWriter();
 				Gson g = new Gson();
@@ -72,7 +66,17 @@ public class T_Job_Area_City_List_Servlet extends HttpServlet {
 				pw.write(str);
 				pw.flush();
 				pw.close();
-
+			}else{
+				params.put("message", "微信绑定失败");
+				params.put("code", "200");
+				PrintWriter pw = response.getWriter();
+				Gson g = new Gson();
+				String str = g.toJson(params); 
+				pw.write(str);
+				pw.flush();
+				pw.close();
+			}
+			
 			//------------------访问限制--------开始----------------------
 		}else{
 			params.put("message", "无效访问");
@@ -86,4 +90,5 @@ public class T_Job_Area_City_List_Servlet extends HttpServlet {
 		}
 		//------------------访问限制--------结束----------------------
 	}
+
 }

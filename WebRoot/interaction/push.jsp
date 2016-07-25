@@ -30,12 +30,7 @@
 	.head { padding: 5px; background: #CAE8EA; cursor: pointer }
 	.content { padding: 10px; text-indent: 2em; border-top: 1px solid #a9a9a9;display:block; }
 	
-	.num{color:red}
 </style>
-
-
-
-
 
 <script type="text/javascript" >
 function test(){
@@ -46,12 +41,6 @@ function test(){
     })
         alert(list); 
 } 
-
-
-
-	
-
-
 
 </script>
 </head>
@@ -88,12 +77,11 @@ function test(){
           </tr>  
       </thead>  
      <tbody>
-       
+
         	<c:forEach items="${page.list}" var="pushObj"
 					varStatus="aa">
 					<tr>
-					
-						<td class="aa"> ${page.pageNo}*${aa.count}&emsp;</td>						
+						<td >${aa.count}&emsp;</td>						
 						<td>${pushObj.name}</td>
 						<td> ${pushObj.sex}</td>						
 						<td> ${pushObj.tel}</td>
@@ -102,18 +90,21 @@ function test(){
 		
 					</tr>
 				</c:forEach> 
-					<tr><td  align="center" colspan="4">共 ${page.totalPages}页 | 第 ${page.pageNo}页</td>
- 				
-              
                 
      </tbody> 
 
-                
  </table>
-    [<a href="T_to_push_Servlet?pageNo=1" >首页</a> 
-                | <a href="T_to_push_Servlet?pageNo=${page.prePage }" >上一页</a> | 
-                <a href="T_to_push_Servlet?pageNo=${page.nextPage}" >下一页</a> | 
-                <a href="T_money_use_Servlet?pageNo=${page.bottomPage}" >末页</a>] 
+ <div class="fenye">
+ <div  class="fy-l" align="center" colspan="4">共 ${page.totalPages}页 | 第 ${page.pageNo}页</div>
+<div class=" fy-r" >
+    [<a href="T_to_push_Servlet?pageNo=1&cityId=${cityId }&school=${school }&sex=${sex }&tel=${tel }" >首页</a> 
+                | <a href="T_to_push_Servlet?pageNo=${page.prePage }&cityId=${cityId }&school=${school }&sex=${sex }&tel=${tel }" >上一页</a> | 
+                <a href="T_to_push_Servlet?pageNo=${page.nextPage}&cityId=${cityId }&school=${school }&sex=${sex }&tel=${tel }" >下一页</a> | 
+                <a href="T_to_push_Servlet?pageNo=${page.bottomPage}&cityId=${cityId }&school=${school }&sex=${sex }&tel=${tel }" >末页</a>] 
+
+</div>
+
+ </div>
 
 	<form action="T_pushAction_servlet" method="post">
 <div>
@@ -134,4 +125,3 @@ function test(){
 </form>
    </body>
 </html>
-

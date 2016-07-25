@@ -102,7 +102,7 @@ public class T_wages_Insert_ChangServlet extends HttpServlet {
 				String dd2=fnum2.format(scale2); 
 				
 //				if(!T_wages_Sql.check(t.getLogin_id()+"", t.getJob_id()+"")){
-				if(!T_wages_Sql.check2(t.getLogin_id()+"", t.getJob_id()+"",t.getRemarks())){
+				if(!T_wages_Sql.check2(t.getLogin_id()+"", t.getJob_id()+"",ly_time)){
 				
 //				if(!T_enroll_Sql.check_login_id_job_id2(t.getLogin_id()+"", t.getJob_id()+"", "1")){
 					

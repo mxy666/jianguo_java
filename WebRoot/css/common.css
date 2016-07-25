@@ -72,7 +72,7 @@ th.specalt {
 }
 
 html>body td {
-	font-size: 11px;
+	font-size: 16px;
 }
 
 body,td,th {
@@ -115,3 +115,12 @@ margin-top:10px;
 	display:inline-block;
 	width:90px;
 }
+
+.fenye{
+	overflow: hidden;
+	}
+	.fy-l{
+	float: left;
+	}
+	.fy-r{
+	float: right;

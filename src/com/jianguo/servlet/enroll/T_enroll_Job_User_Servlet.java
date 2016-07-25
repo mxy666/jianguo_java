@@ -36,8 +36,8 @@ public class T_enroll_Job_User_Servlet extends HttpServlet {
 		this.doPost(request, response);
 	}
 	
-	//http://192.168.1.132/JianGuo_Server/T_enroll_Job_User_Servlet?only=CCC3313A7A048C04F4F09C873EFBBEA7&job_id=79&nv_job_id=0&count=0
-	//http://101.200.205.243:8080/T_enroll_Job_User_Servlet?only=AAD1F76F407C390F54EDCE6E2E08E1C5&job_id=17&nv_job_id=18&count=0
+	//http://192.168.1.132/JianGuo_Server/T_enroll_Job_User_Servlet?only=C115261C65717AF2C44CA17ED00C4089&job_id=1178&nv_job_id=0&count=0
+	//http://101.200.205.243:8080/T_enroll_Job_User_Servlet?only=C115261C65717AF2C44CA17ED00C4089&job_id=1178&nv_job_id=0&count=0
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
 		System.out.println("---T_enroll_Job_User_Servlet---");

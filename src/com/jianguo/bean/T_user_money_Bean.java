@@ -12,6 +12,8 @@ public class T_user_money_Bean {
 	private String kahao;//卡号
 	private String pay_password;//提现密码
 	private String pay_status;//提现密码
+	private int weixin;//用户登录ID
+	private String nickname;//微信名字
 	
 	public int getId() {
 		return id;
@@ -66,6 +68,18 @@ public class T_user_money_Bean {
 	}
 	public String getPay_status() {
 		return pay_status;
+	}
+	public void setWeixin(int weixin) {
+		this.weixin = weixin;
+	}
+	public int getWeixin() {
+		return weixin;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getNickname() {
+		return nickname;
 	}
 	
 }

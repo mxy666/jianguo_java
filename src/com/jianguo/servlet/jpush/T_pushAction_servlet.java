@@ -50,13 +50,15 @@ public class T_pushAction_servlet extends HttpServlet {
 		
 			request.setAttribute("sex", sex);
 		
-		
+			PrintWriter out = response.getWriter();
+			out.flush();out.println("<script>");
+			out.println("alert('推送成功');");
+			out.println("history.back();");
+			out.println("</script>");
+			
+			
 		PushAction.push(pushWay,message,cityId,school,tel,sex);
-		PrintWriter out = response.getWriter();
-		out.flush();out.println("<script>");
-		out.println("alert('推送成功');");
-		out.println("history.back();");
-		out.println("</script>");
+		System.out.println("hhhhhhhhhhhhhhhhhhhhhh");
 		
 	}
 

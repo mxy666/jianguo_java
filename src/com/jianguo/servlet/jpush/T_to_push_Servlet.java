@@ -45,13 +45,10 @@ public class T_to_push_Servlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 	
-		
 		String cityId=request.getParameter("cityId");
 		String school=request.getParameter("school");
 		String tel=request.getParameter("tel");
 		String sex=request.getParameter("sex");
-		
-		
 		
 		int pageNo =Integer.parseInt(request.getParameter("pageNo"));
 		PageModel page = new PageModel();

@@ -29,10 +29,10 @@ public class T_user_money_Sql {
 		return b;
 	}
 	
-	public static int insert(String login_id,String name,String money,String zhifubao,String yinhang,String kahao,String pay_password){
+	public static int insert(String login_id,String name,String money,String zhifubao,String yinhang,String kahao,String pay_password,String weixin){
 		int num=0;
 		Connection conn=DButil.getCon();
-		String sql="insert into t_user_money(login_id,name,money,zhifubao,yinhang,kahao,pay_password) values(?,?,?,?,?,?,?)";
+		String sql="insert into t_user_money(login_id,name,money,zhifubao,yinhang,kahao,pay_password,weixin) values(?,?,?,?,?,?,?,?)";
 		PreparedStatement pst=DButil.getPstm(conn, sql);
 		try {
 			pst.setString(1, login_id);
@@ -42,6 +42,7 @@ public class T_user_money_Sql {
 			pst.setString(5, yinhang);
 			pst.setString(6, kahao);
 			pst.setString(7, pay_password);
+			pst.setString(8, weixin);
 			num=pst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -73,6 +74,7 @@ public class T_user_money_Sql {
 				t_user_money.setYinhang(rs.getString("yinhang")+"");
 				t_user_money.setKahao(rs.getString("kahao")+"");
 				t_user_money.setPay_password(rs.getString("pay_password")+"");
+				t_user_money.setWeixin(rs.getInt("weixin"));
 			}
 			psmt.close();
 			conn.close();
@@ -181,6 +183,23 @@ public class T_user_money_Sql {
 			psmt.setString(2, yinhang);
 			psmt.setString(3, kahao);
 			psmt.setString(4, login_id);
+			num=psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return num;
+	}
+	
+	public static int update_weixin(String weixin,String login_id){
+		int num=0;
+		try {
+			Connection conn=DButil.getCon();
+			String sql = "update t_user_money set weixin=? where login_id=?";
+			PreparedStatement psmt = DButil.getPstm(conn, sql);
+			psmt.setString(1, weixin);
+			psmt.setString(2, login_id);
 			num=psmt.executeUpdate();
 			psmt.close();
 			conn.close();
