@@ -30,7 +30,6 @@
 	.head { padding: 5px; background: #CAE8EA; cursor: pointer }
 	.content { padding: 10px; text-indent: 2em; border-top: 1px solid #a9a9a9;display:block; }
 	
-	.num{color:red}
 </style>
 
 
@@ -49,7 +48,7 @@ function test(){
 
 
 
-	
+
 
 
 
@@ -92,8 +91,7 @@ function test(){
         	<c:forEach items="${page.list}" var="pushObj"
 					varStatus="aa">
 					<tr>
-					
-						<td class="aa"> ${page.pageNo}*${aa.count}&emsp;</td>						
+						<td >${page.pageNo}*${aa.count}&emsp;</td>						
 						<td>${pushObj.name}</td>
 						<td> ${pushObj.sex}</td>						
 						<td> ${pushObj.tel}</td>
@@ -102,18 +100,22 @@ function test(){
 		
 					</tr>
 				</c:forEach> 
-					<tr><td  align="center" colspan="4">共 ${page.totalPages}页 | 第 ${page.pageNo}页</td>
- 				
-              
                 
      </tbody> 
 
                 
  </table>
+ <div class="fenye">
+ <div  class="fy-l" align="center" colspan="4">共 ${page.totalPages}页 | 第 ${page.pageNo}页</div>
+<div class=" fy-r" >
     [<a href="T_to_push_Servlet?pageNo=1" >首页</a> 
                 | <a href="T_to_push_Servlet?pageNo=${page.prePage }" >上一页</a> | 
                 <a href="T_to_push_Servlet?pageNo=${page.nextPage}" >下一页</a> | 
                 <a href="T_money_use_Servlet?pageNo=${page.bottomPage}" >末页</a>] 
+
+</div>
+ 
+ </div>
 
 	<form action="T_pushAction_servlet" method="post">
 <div>
@@ -134,4 +136,3 @@ function test(){
 </form>
    </body>
 </html>
-
